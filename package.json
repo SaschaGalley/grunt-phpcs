@@ -1,0 +1,28 @@
+{
+  "name": "grunt-phpcs",
+  "description": "Grunt plugin for running PHP Code Sniffer.",
+  "homepage": "https://github.com/SaschaGalley/grunt-phpcs",
+  "author": {
+    "name": "Sascha Galley",
+    "email": "me@xash.at",
+    "url": "http://xash.at/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SaschaGalley/grunt-phpcs.git"
+  },
+  "contributors": [],
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "0.1.1rc6",
+    "grunt": "0.4.0rc6"
+  },
+  "keywords": [
+    "gruntplugin",
+    "phpunit"
+  ]
+}
