@@ -21,8 +21,8 @@ _This plugin is developed for Grunt `0.4.0` and is not tested for backward compa
 	```
 
 
-##PHPUnit task
-_Run this task with the `grunt phpunit` command._
+##PHP Code Sniffer task
+_Run this task with the `grunt phpcs` command._
 
 _This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
 
@@ -32,18 +32,16 @@ _This task is a [multi task][] so any targets, files and options should be speci
 ####dir
 Type: `String`
 
-The directory where phpunit should be run, i.e. where the test classes and the bootstrap are located in.
+The directory where phpcs should search for files.
 
 ###Options
 ####bin
-Type: `String`  Default: `'phpunit'`
-
-Generate code coverage report in text format. This option can also be set by running the task with `--coverage`.
+Type: `String`  Default: `'phpcs'`
 
 ####debug
 Type: `Boolean` Default: `false`
 
-Display debbuging information during test execution. This option can also be set by running the task with `--debug`.
+Display debbuging information during execution. This option can also be set by running the task with `--debug`.
 
 ####verbose
 Type: `Boolean` Default: `false`
