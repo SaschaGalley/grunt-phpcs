@@ -25,10 +25,11 @@ module.exports = function(grunt) {
 		
 		phpcs: {
 			application: {
-				dir: '../grunt_test/source/application'
+				dir: 'application/classes'
 			},
 			options: {
-				bin: 'vendor/bin/phpcs'
+				bin: 'vendor/bin/phpcs',
+				standard: 'Zend'
 			}
 		}
 	});
