@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
-		
+
 		jshint: {
 			all: [
 				'Gruntfile.js',
@@ -22,21 +22,21 @@ module.exports = function(grunt) {
 				jshintrc: '.jshintrc'
 			}
 		},
-		
+
 		phpcs: {
 			application: {
-				dir: 'application/classes'
+				dir: 'php/modules'
 			},
 			options: {
 				bin: 'vendor/bin/phpcs',
-				standard: 'Zend'
+				standard: 'PSR2'
 			}
 		}
 	});
 
 	// Actually load this plugin's task(s).
 	grunt.loadTasks('tasks');
-	
+
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 
 	// By default, lint and run all tests.
