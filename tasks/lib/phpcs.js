@@ -23,7 +23,8 @@ exports.init = function(grunt) {
             ignore: false,
             severity: false,
             standard: false,
-            verbose: false
+            verbose: false,
+            logfile: false
         },
         cmd    = null,
         done   = null,
@@ -61,6 +62,11 @@ exports.init = function(grunt) {
         if (grunt.option('verbose') || config.standard) {
             // Define the code sniffer standard.
             cmd += ' --standard=' + config.standard;
+        }
+
+        if (grunt.option('report-file') || config.reportFile) {
+            // Define the code sniffer standard.
+            cmd += ' --report-file=' + config.reportFile;
         }
 
         if (grunt.option('verbose') || config.verbose === true) {
