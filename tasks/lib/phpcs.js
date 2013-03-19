@@ -24,7 +24,7 @@ exports.init = function(grunt) {
             severity: false,
             standard: false,
             verbose: false,
-            logfile: false
+            reportFile: false
         },
         cmd    = null,
         done   = null,
