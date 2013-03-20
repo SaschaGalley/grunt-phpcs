@@ -58,7 +58,7 @@ exports.init = function(grunt) {
             cmd += ' --severity=' + config.severity;
         }
 
-        if (grunt.option('verbose') || config.standard) {
+        if (grunt.option('standard') || config.standard) {
             // Define the code sniffer standard.
             cmd += ' --standard=' + config.standard;
         }
