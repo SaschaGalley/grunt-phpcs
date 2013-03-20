@@ -80,3 +80,8 @@ Define the standard to use. This option can also be set by running the task with
 Type: `Boolean` Default: `false`
 
 Output more verbose information. This option can also be set by running the task with `--verbose`.
+
+####reportFile
+Type: `string` Default: `false`
+
+Log report to the file. This option can also be set by running the task with `--report-file`.
