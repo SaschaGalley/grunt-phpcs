@@ -58,6 +58,11 @@ exports.init = function(grunt) {
             // The minimum severity required to display an error or warning
             cmd += ' --severity=' + config.severity;
         }
+        
+        if (grunt.option('warning-severity') || config.warningSeverity) {
+            // The minimum severity required to display an error or warning
+            cmd += ' --warning-severity=' + config.warningSeverity;
+        }
 
         if (grunt.option('standard') || config.standard) {
             // Define the code sniffer standard.
