@@ -24,7 +24,8 @@ exports.init = function(grunt) {
             severity: false,
             standard: false,
             verbose: false,
-            reportFile: false
+            reportFile: false,
+            report: 'full'
         },
         cmd    = null,
         done   = null,
@@ -72,6 +73,11 @@ exports.init = function(grunt) {
         if (grunt.option('report-file') || config.reportFile) {
             // Define the code sniffer standard.
             cmd += ' --report-file=' + config.reportFile;
+        }
+
+        if (grunt.option('report') || config.report) {
+            // Define the style of the report.
+            cmd += ' --report=' + config.report;
         }
 
         if (grunt.option('verbose') || config.verbose === true) {
