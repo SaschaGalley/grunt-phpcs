@@ -70,7 +70,7 @@ exports.init = function(grunt) {
         }
 
         if (grunt.option('report-file') || config.reportFile) {
-            // Define the code sniffer standard.
+            // Define the file to write the report to.
             cmd += ' --report-file=' + config.reportFile;
         }
 
