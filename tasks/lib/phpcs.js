@@ -24,7 +24,8 @@ exports.init = function(grunt) {
             standard: false,
             verbose: false,
             reportFile: false,
-            report: 'full'
+            report: 'full',
+            maxBuffer: 200*1024
         },
         cmd    = null,
         done   = null,
@@ -103,8 +104,11 @@ exports.init = function(grunt) {
      *
      */
     exports.run = function() {
+        var cmdOptions = {
+            maxBuffer: config.maxBuffer
+        };
 
-        exec(cmd, function(err, stdout, stderr) {
+        exec(cmd, cmdOptions, function(err, stdout, stderr) {
 
             if (stdout) {
                 grunt.log.write(stdout);
