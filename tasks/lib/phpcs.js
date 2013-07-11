@@ -18,7 +18,6 @@ exports.init = function(grunt) {
         defaults = {
             // Default options
             bin: 'phpcs',
-            debug: false,
             extensions: false,
             ignore: false,
             severity: false,
@@ -38,11 +37,6 @@ exports.init = function(grunt) {
     var buildCommand = function(dir) {
 
         var cmd = path.normalize(config.bin);
-
-        if (grunt.option('debug') || config.debug === true) {
-            // Display debbuging information during test execution.
-            cmd += ' --debug';
-        }
 
         if (grunt.option('extensions') || config.extensions) {
             // A comma separated list of file extensions to check
