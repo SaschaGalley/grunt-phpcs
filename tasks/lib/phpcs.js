@@ -25,8 +25,7 @@ exports.init = function(grunt) {
             verbose: false,
             reportFile: false,
             report: 'full',
-            maxBuffer: 200*1024
-            report: 'full',
+            maxBuffer: 200*1024,
             ignoreExitCode: false
         },
         cmd    = null,
@@ -56,7 +55,7 @@ exports.init = function(grunt) {
             // The minimum severity required to display an error or warning
             cmd += ' --severity=' + config.severity;
         }
-        
+
         if (grunt.option('warning-severity') || config.warningSeverity) {
             // The minimum severity required to display an error or warning
             cmd += ' --warning-severity=' + config.warningSeverity;
