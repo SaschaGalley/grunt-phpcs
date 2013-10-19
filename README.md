@@ -52,18 +52,10 @@ The file or directory where phpcs should search for files.
 ####bin
 Type: `String`  Default: `'phpcs'`
 
-####ignoreExitCode
+####debug
 Type: `Boolean` Default: `false`
 
-####maxBuffer
-Type: `Number` Default: `200*1024`
-
-Set the buffer size.
-
-####verbose
-Type: `Boolean` Default: `false`
-
-Output more verbose information. This option can also be set by running the task with `--verbose`.
+Display debbuging information during execution. This option can also be set by running the task with `--debug`.
 
 ####extensions
 Type: `String` Default: `false`
@@ -80,26 +72,16 @@ Type: `Integer` Default: `false`
 
 The minimum severity required to display an error or warning. This option can also be set by running the task with `--severity=<severity>`.
 
-####warningSeverity
-Type: `Integer` Default: `false`
-
-The minimum severity required to display a warning. This option can also be set by running the task with `--warningSeverity=<severity>`.
-
-####errorSeverity
-Type: `Integer` Default: `false`
-
-The minimum severity required to display an error. This option can also be set by running the task with `--errorSeverity=<severity>`.
-
 ####standard
 Type: `String`  Default: `false`
 Define the standard to use. This option can also be set by running the task with `--standard=<standard>`.
 
-####report
-Type: `String` Default: `false`
+####verbose
+Type: `Boolean` Default: `false`
 
-Report types and options
+Output more verbose information. This option can also be set by running the task with `--verbose`.
 
 ####reportFile
-Type: `String` Default: `false`
+Type: `string` Default: `false`
 
 Log report to the file. This option can also be set by running the task with `--report-file`.
