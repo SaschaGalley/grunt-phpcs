@@ -72,6 +72,11 @@ Type: `Integer` Default: `false`
 
 The minimum severity required to display an error or warning. This option can also be set by running the task with `--severity=<severity>`.
 
+####warningSeverity
+Type: `Integer` Default: not set
+
+The minimum severity required to display a warning. Takes precedence over `severity` if set. This option can also be set by running the task with `--warning-severity=<severity>`.
+
 ####standard
 Type: `String`  Default: `false`
 Define the standard to use. This option can also be set by running the task with `--standard=<standard>`.
