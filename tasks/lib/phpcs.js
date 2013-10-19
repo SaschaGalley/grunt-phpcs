@@ -1,6 +1,6 @@
 /*
  * grunt-phpunit
- * https://github.com/SaschaGalley/grunt-phpunit
+ * https://github.com/SaschaGalley/grunt-phpcs
  *
  * Copyright (c) 2013 Sascha Galley
  * http://xash.at
@@ -21,12 +21,13 @@ exports.init = function(grunt) {
             extensions: false,
             ignore: false,
             severity: false,
+            warningSeverity: false,
+            errorSeverity: false,
             standard: false,
             verbose: false,
             reportFile: false,
             report: 'full',
-            maxBuffer: 200*1024
-            report: 'full',
+            maxBuffer: 200*1024,
             ignoreExitCode: false
         },
         cmd    = null,
@@ -56,10 +57,15 @@ exports.init = function(grunt) {
             // The minimum severity required to display an error or warning
             cmd += ' --severity=' + config.severity;
         }
-        
-        if (grunt.option('warning-severity') || config.warningSeverity) {
-            // The minimum severity required to display an error or warning
+
+        if (grunt.option('warningSeverity') || config.warningSeverity) {
+            // The minimum severity required to display a warning
             cmd += ' --warning-severity=' + config.warningSeverity;
+        }
+
+        if (grunt.option('errorSverity') || config.errorSeverity) {
+            // The minimum severity required to display an error
+            cmd += ' --error-severity=' + config.errorSeverity;
         }
 
         if (grunt.option('standard') || config.standard) {
