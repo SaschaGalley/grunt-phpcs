@@ -20,13 +20,23 @@ exports.init = function(grunt) {
             bin: 'phpcs',
             extensions: false,
             ignore: false,
-            severity: false,
             standard: false,
             verbose: false,
             reportFile: false,
             report: 'full',
             maxBuffer: 200*1024,
             ignoreExitCode: false
+        },
+        cliOptions = {
+            errorSeverity: grunt.option('error-severity'),
+            extensions: grunt.option('extensions'),
+            ignore: grunt.option('ignore'),
+            report: grunt.option('report'),
+            reportFile: grunt.option('report-file'),
+            severity: grunt.option('severity'),
+            standard: grunt.option('standard'),
+            warningSeverity: grunt.option('warning-severity'),
+            verbose: grunt.option('verbose')
         },
         cmd    = null,
         done   = null,
@@ -41,42 +51,47 @@ exports.init = function(grunt) {
 
         var cmd = path.normalize(config.bin);
 
-        if (grunt.option('extensions') || config.extensions) {
+        if (config.errorSeverity !== undefined) {
+            // The minimum severity required to display an error or warning
+            cmd += ' --error-severity=' + config.errorSeverity;
+        }
+
+        if (config.extensions) {
             // A comma separated list of file extensions to check
             cmd += ' --extensions=' + config.extensions;
         }
 
-        if (grunt.option('ignore') || config.ignore) {
+        if (config.ignore) {
             // A comma separated list of patterns to ignore files and directories.
             cmd += ' --ignore=' + config.ignore;
         }
 
-        if (grunt.option('severity') || config.severity) {
+        if (config.severity !== undefined) {
             // The minimum severity required to display an error or warning
             cmd += ' --severity=' + config.severity;
         }
 
-        if (grunt.option('warning-severity') || config.warningSeverity) {
+        if (config.warningSeverity !== undefined) {
             // The minimum severity required to display an error or warning
             cmd += ' --warning-severity=' + config.warningSeverity;
         }
 
-        if (grunt.option('standard') || config.standard) {
+        if (config.standard) {
             // Define the code sniffer standard.
             cmd += ' --standard=' + config.standard;
         }
 
-        if (grunt.option('report-file') || config.reportFile) {
+        if (config.reportFile) {
             // Define the file to write the report to.
             cmd += ' --report-file=' + config.reportFile;
         }
 
-        if (grunt.option('report') || config.report) {
+        if (config.report) {
             // Define the style of the report.
             cmd += ' --report=' + config.report;
         }
 
-        if (grunt.option('verbose') || config.verbose === true) {
+        if (config.verbose === true) {
             // Output more verbose information.
             cmd += ' -v';
         }
@@ -90,8 +105,16 @@ exports.init = function(grunt) {
      */
     exports.setup = function(runner) {
 
-        var dir = path.normalize(runner.data.dir);
+        var dir = path.normalize(runner.data.dir),
+            attr;
         config  = runner.options(defaults);
+
+        for (attr in cliOptions) {
+            if (cliOptions[attr] !== undefined) { 
+                config[attr] = cliOptions[attr];
+            }
+        }
+
         cmd     = buildCommand(dir) + ' ' + dir;
 
         grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + dir.cyan);
