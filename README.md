@@ -33,7 +33,7 @@ _This task is a [multi task][] so any targets, files and options should be speci
 ```js
 phpcs: {
 	application: {
-		dir: 'application/classes'
+		dir: ['application/classes/*.php', application/lib/**/*.php]
 	},
 	options: {
 		bin: 'vendor/bin/phpcs',
@@ -44,9 +44,9 @@ phpcs: {
 
 ###Target Properties
 ####dir
-Type: `String`
+Type: `Array`
 
-The file or directory where phpcs should search for files.
+Globbing pattern where phpcs should search for files.
 
 ###Options
 ####bin

@@ -105,19 +105,19 @@ exports.init = function(grunt) {
      */
     exports.setup = function(runner) {
 
-        var dir = path.normalize(runner.data.dir),
+        var dir = runner.data.dir,
             attr;
         config  = runner.options(defaults);
 
         for (attr in cliOptions) {
-            if (cliOptions[attr] !== undefined) { 
+            if (cliOptions[attr] !== undefined) {
                 config[attr] = cliOptions[attr];
             }
         }
 
-        cmd     = buildCommand(dir) + ' ' + dir;
+        cmd     = buildCommand(dir) + ' ' + grunt.file.expand(dir).join(' ');
 
-        grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + dir.cyan);
+        grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + dir.join(' ').cyan);
         grunt.verbose.writeln('Exec: ' + cmd);
 
         done    = runner.async();
