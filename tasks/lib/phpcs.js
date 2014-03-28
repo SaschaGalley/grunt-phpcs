@@ -95,6 +95,10 @@ exports.init = function(grunt) {
             // Output more verbose information.
             cmd += ' -v';
         }
+        if (config.showSniffCodes === true) {
+            // Show sniff codes in all reports
+            cmd += ' -s';
+        }
         return cmd;
     };
 
