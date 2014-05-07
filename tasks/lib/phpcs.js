@@ -25,7 +25,8 @@ exports.init = function(grunt) {
             reportFile: false,
             report: 'full',
             maxBuffer: 200*1024,
-            ignoreExitCode: false
+            ignoreExitCode: false,
+            tabWidth: false
         },
         cliOptions = {
             errorSeverity: grunt.option('error-severity'),
@@ -36,7 +37,8 @@ exports.init = function(grunt) {
             severity: grunt.option('severity'),
             standard: grunt.option('standard'),
             warningSeverity: grunt.option('warning-severity'),
-            verbose: grunt.option('verbose')
+            verbose: grunt.option('verbose'),
+            tabWidth: grunt.option('tab-width')
         },
         cmd    = null,
         done   = null,
@@ -94,6 +96,11 @@ exports.init = function(grunt) {
         if (config.verbose === true) {
             // Output more verbose information.
             cmd += ' -v';
+        }
+
+        if(config.tabWidth) {
+            // Convert tabs to the specified number of spaces when sniffing
+            cmd += ' --tab-width=' + config.tabWidth
         }
         return cmd;
     };
