@@ -98,9 +98,9 @@ exports.init = function(grunt) {
             cmd += ' -v';
         }
 
-        if(config.tabWidth) {
+        if (config.tabWidth) {
             // Convert tabs to the specified number of spaces when sniffing
-            cmd += ' --tab-width=' + config.tabWidth
+            cmd += ' --tab-width=' + config.tabWidth;
         }
         return cmd;
     };
