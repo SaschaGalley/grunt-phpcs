@@ -33,7 +33,7 @@ _This task is a [multi task][] so any targets, files and options should be speci
 ```js
 phpcs: {
 	application: {
-		dir: ['application/classes/*.php', application/lib/**/*.php]
+		dir: ['application/classes/*.php', 'application/lib/**/*.php']
 	},
 	options: {
 		bin: 'vendor/bin/phpcs',
