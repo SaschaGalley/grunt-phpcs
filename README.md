@@ -103,3 +103,9 @@ Report types and options
 Type: `String` Default: `false`
 
 Log report to the file. This option can also be set by running the task with `--report-file`.
+
+####tabWidth
+Type: `Integer` Default: `false`
+
+Automatically convert tabs to the specified number of
+spaces when sniffing. This option can also be set by running the task with `--tab-width`.
