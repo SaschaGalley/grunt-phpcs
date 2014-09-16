@@ -42,6 +42,27 @@ phpcs: {
 }
 ```
 
+### Custom callback
+
+Do whatever you want with the output.
+
+```js
+function log(err, stdout, stderr, cb) {
+    console.log(stdout);
+    cb();
+}
+grunt.initConfig({
+	phpcs: {
+		application: {
+    		dir: ['application/classes/*.php', 'application/lib/**/*.php']
+        },
+        options: {
+            callback: log
+        }
+	}
+});
+```
+
 ###Target Properties
 ####dir
 Type: `Array`

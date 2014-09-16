@@ -147,6 +147,10 @@ exports.init = function(grunt) {
 
         exec(cmd, cmdOptions, function(err, stdout, stderr) {
 
+            if (typeof config.callback === 'function') {
+                config.callback.call(this, err, stdout, stderr, done);
+            }
+
             if (stdout) {
                 grunt.log.write(stdout);
             }
