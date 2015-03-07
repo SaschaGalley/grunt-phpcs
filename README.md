@@ -63,9 +63,6 @@ grunt.initConfig({
 ####bin
 Type: `String`  Default: `'phpcs'`
 
-####ignoreExitCode
-Type: `Boolean` Default: `false`
-
 ####maxBuffer
 Type: `Number` Default: `200*1024`
 
@@ -75,16 +72,6 @@ Set the buffer size.
 Type: `Boolean` Default: `false`
 
 Output more verbose information.
-
-####extensions
-Type: `String` Default: `false`
-
-A comma separated list of file extensions to check.
-
-####ignore
-Type: `String` Default: `false`
-
-A comma separated list of patterns to ignore files and directories.
 
 ####severity
 Type: `Integer` Default: `false`
@@ -103,6 +90,7 @@ The minimum severity required to display an error.
 
 ####standard
 Type: `String`  Default: `false`
+
 Define the standard to use.
 
 ####report
