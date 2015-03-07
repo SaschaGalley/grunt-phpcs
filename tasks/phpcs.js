@@ -36,39 +36,39 @@ module.exports = function(grunt) {
             maxBuffer: 200*1024
         },
         done = null;
-
+    
     grunt.registerMultiTask('phpcs', 'Run PHP Code Sniffer', function() {
         var done = null,
-        options = this.options(defaults),
-        execute = path.normalize(options.bin),
-        files = [].concat.apply([], this.files.map(function(mapping) { return mapping.src; })).sort();
-    
-        for (var flag in command.flags) {
-            if (options[flag] === true) {
-                execute += ' -' + command.flags[flag];
-            }
-        }
+            parameters = null,
+            target = this.target,
+            options = this.options(defaults),
+            execute = path.normalize(options.bin),
+            files = [].concat.apply([], this.files.map(function(mapping) { return mapping.src; })).sort();
         
-        for (var option in command.options) {
-            if (options[option] !== undefined) {
-                execute += ' --' + command.options[option] + '=' + options[option];
-            }
-        }
+        // removes duplicate files
+        files = files.filter(function(file, position) { 
+            return !position || file !== files[position - 1];
+        });
         
-        files = files.filter(function(file, position) { return !position || file !== files[position - 1]; });
+        // generates parameters
+        parameters = Object.keys(options).map(function(option) {
+            return option in command.flags && options[option] === true ? 
+                '-' + command.flags[option] : option in command.options && options[option] !== undefined ? 
+                    '--' + command.options[option] + '=' + options[option] : null;
+        });
         
-        execute += ' ' + '"' + files.join('" "') + '"';
-    
-        grunt.log.writeln('Checking ' + files.length + ' file' + (files.length === 1 ? '' : 's') + '...');
+        execute += ' ' + parameters.join(' ') + ' "' + files.join('" "') + '"';
+        
         grunt.verbose.writeln('Executing: ' + execute);
         
         done = this.async();
-    
-        exec(execute, {maxBuffer: options.maxBuffer}, function(err, stdout, stderr) {
+        
+        exec(execute, {maxBuffer: options.maxBuffer}, function(error, stdout, stderr) {
             /* jshint -W030 */
             stdout && grunt.log.write(stdout);
-            err && !options.ignoreExitCode && grunt.fatal(err);
-            done();
+            error && grunt.fail.warn(stderr ? stderr : 'Task phpcs:' + target + ' failed.');
+            !error && grunt.log.ok(files.length + ' file' + (files.length === 1 ? '' : 's') + ' lint free.');
+            done(error);
         });
     });
 };
