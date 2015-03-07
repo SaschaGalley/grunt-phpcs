@@ -45,11 +45,11 @@ exports.init = function(grunt) {
         config = {};
 
     /**
-     * Builds phpunit command
+     * Builds PHP Code Sniffer command
      *
      * @return string
      */
-    var buildCommand = function(dir) {
+    var buildCommand = function() {
 
         var cmd = path.normalize(config.bin);
 
@@ -117,23 +117,28 @@ exports.init = function(grunt) {
      * @param Object runner
      */
     exports.setup = function(runner) {
-
-        var dir = runner.data.dir,
-            attr;
-        config  = runner.options(defaults);
-
+        var files = [].concat.apply([], runner.files.map(function(mapping) { return mapping.src })).sort();
+        
+        files = files.filter(function(file, position) { return !position || file != files[position - 1] });
+        
+        files = '"' + files.join('" "') + '"';
+        
+        var attr;
+        
+        config    = runner.options(defaults);
+        
         for (attr in cliOptions) {
             if (cliOptions[attr] !== undefined) {
                 config[attr] = cliOptions[attr];
             }
         }
+        
+        cmd       = buildCommand() + ' ' + files;
 
-        cmd     = buildCommand(dir) + ' ' + grunt.file.expand(dir).join(' ');
-
-        grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + dir.join(' ').cyan);
+        grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + files);
         grunt.verbose.writeln('Exec: ' + cmd);
 
-        done    = runner.async();
+        done      = runner.async();
     };
 
     /**
