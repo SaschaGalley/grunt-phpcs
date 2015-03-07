@@ -11,29 +11,25 @@ _This plugin is developed for Grunt `0.4.0` and is not tested for backward compa
 	npm install grunt-phpcs --save-dev
 	```
 
+2. Install [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer#installation) (preferably with [composer](https://github.com/composer/composer))
 
-2. [Install PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer#installation) (preferably with [composer](https://github.com/composer/composer))
 3. Add this to your project's `Gruntfile.js` gruntfile:
 
 	```js
 	grunt.loadNpmTasks('grunt-phpcs');
 	```
 
-
 ##PHP Code Sniffer task
 _Run this task with the `grunt phpcs` command._
 
-_This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
-
-[multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
-
+Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
 ###Usage Example
 
 ```js
 phpcs: {
 	application: {
-		dir: ['application/classes/*.php', 'application/lib/**/*.php']
+		src: ['application/classes/*.php', 'application/lib/**/*.php']
 	},
 	options: {
 		bin: 'vendor/bin/phpcs',
@@ -48,26 +44,20 @@ Do whatever you want with the output.
 
 ```js
 function log(err, stdout, stderr, cb) {
-    console.log(stdout);
-    cb();
+	console.log(stdout);
+	cb();
 }
 grunt.initConfig({
 	phpcs: {
 		application: {
-    		src: ['application/classes/*.php', 'application/lib/**/*.php']
-        },
-        options: {
-            callback: log
-        }
+			src: ['application/classes/*.php', 'application/lib/**/*.php']
+		},
+		options: {
+			callback: log
+		}
 	}
 });
 ```
-
-###Target Properties
-####src
-Type: `Array`
-
-Globbing pattern where phpcs should search for files.
 
 ###Options
 ####bin
@@ -84,36 +74,36 @@ Set the buffer size.
 ####verbose
 Type: `Boolean` Default: `false`
 
-Output more verbose information. This option can also be set by running the task with `--verbose`.
+Output more verbose information.
 
 ####extensions
 Type: `String` Default: `false`
 
-A comma separated list of file extensions to check. This option can also be set by running the task with `--extensions=<extensions>`.
+A comma separated list of file extensions to check.
 
 ####ignore
 Type: `String` Default: `false`
 
-A comma separated list of patterns to ignore files and directories. This option can also be set by running the task with `--ignore=<ignore>`.
+A comma separated list of patterns to ignore files and directories.
 
 ####severity
 Type: `Integer` Default: `false`
 
-The minimum severity required to display an error or warning. This option can also be set by running the task with `--severity=<severity>`.
+The minimum severity required to display an error or warning.
 
 ####warningSeverity
 Type: `Integer` Default: `false`
 
-The minimum severity required to display a warning. This option can also be set by running the task with `--warningSeverity=<severity>`.
+The minimum severity required to display a warning.
 
 ####errorSeverity
 Type: `Integer` Default: `false`
 
-The minimum severity required to display an error. This option can also be set by running the task with `--errorSeverity=<severity>`.
+The minimum severity required to display an error.
 
 ####standard
 Type: `String`  Default: `false`
-Define the standard to use. This option can also be set by running the task with `--standard=<standard>`.
+Define the standard to use.
 
 ####report
 Type: `String` Default: `false`
@@ -123,10 +113,9 @@ Report types and options
 ####reportFile
 Type: `String` Default: `false`
 
-Log report to the file. This option can also be set by running the task with `--report-file`.
+Log report to the file.
 
 ####tabWidth
 Type: `Integer` Default: `false`
 
-Automatically convert tabs to the specified number of
-spaces when sniffing. This option can also be set by running the task with `--tab-width`.
+Automatically convert tabs to the specified number of spaces when sniffing.
