@@ -52,6 +52,11 @@ Type: `Boolean` Default: `false`
 
 Output more verbose information.
 
+####showSniffCodes
+Type: `Boolean` Default: `false`
+
+Show sniff codes in all reports.
+
 ####severity
 Type: `Integer` Default: `false`
 
