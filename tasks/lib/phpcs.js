@@ -45,7 +45,7 @@ exports.init = function(grunt) {
         config = {};
 
     /**
-     * Builds phpunit command
+     * Builds PHP Code Sniffer command
      *
      * @return string
      */
@@ -117,20 +117,16 @@ exports.init = function(grunt) {
      * @param Object runner
      */
     exports.setup = function(runner) {
-
         var files = [].concat.apply([], runner.files.map(function(mapping) { return mapping.src })).sort();
+        
         files = files.filter(function(file, position) { return !position || file != files[position - 1] });
+        
         files = '"' + files.join('" "') + '"';
         
         var attr;
-        config = runner.options(defaults);
-
-        for (attr in cliOptions) {
-            if (cliOptions[attr] !== undefined) {
-                config[attr] = cliOptions[attr];
-            }
-        }
-
+        
+        config    = runner.options(defaults);
+        
         // Merge task options
         Object.keys(runner.data).forEach(function(attr) {
             config[attr] = runner.data[attr];
