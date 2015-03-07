@@ -53,7 +53,7 @@ module.exports = function(grunt) {
             return option in command.flags && options[option] === true ? 
                 '-' + command.flags[option] : option in command.options && options[option] !== undefined ? 
                     '--' + command.options[option] + '=' + options[option] : null;
-        });
+        }).filter(Boolean);
         
         execute += ' ' + parameters.join(' ') + ' "' + files.join('" "') + '"';
         
