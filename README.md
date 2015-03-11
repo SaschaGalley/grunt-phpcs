@@ -54,7 +54,7 @@ function log(err, stdout, stderr, cb) {
 grunt.initConfig({
 	phpcs: {
 		application: {
-    		dir: ['application/classes/*.php', 'application/lib/**/*.php']
+    		src: ['application/classes/*.php', 'application/lib/**/*.php']
         },
         options: {
             callback: log
@@ -64,7 +64,7 @@ grunt.initConfig({
 ```
 
 ###Target Properties
-####dir
+####src
 Type: `Array`
 
 Globbing pattern where phpcs should search for files.
