@@ -24,12 +24,14 @@ module.exports = function(grunt) {
 		},
 
 		phpcs: {
-			application: {
-				dir: ['php/**']
-			},
 			options: {
-				bin: 'vendor/bin/phpcs',
+				bin: '~/.composer/vendor/bin/phpcs',
 				standard: 'PSR2'
+			},
+			application: {
+				expand: true,
+				cwd: 'php',
+				src: ['**/*.php']
 			}
 		}
 	});
