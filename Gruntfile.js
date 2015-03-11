@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
 		phpcs: {
 			application: {
-				dir: ['php/**']
+				src: ['php/**']
 			},
 			options: {
 				bin: 'vendor/bin/phpcs',
