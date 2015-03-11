@@ -128,6 +128,11 @@ exports.init = function(grunt) {
             }
         }
 
+        // Merge task options
+        Object.keys(runner.data).forEach(function(attr) {
+            config[attr] = runner.data[attr];
+        });
+
         cmd     = buildCommand(dir) + ' ' + grunt.file.expand(dir).join(' ');
 
         grunt.log.writeln('Starting phpcs (target: ' + runner.target.cyan + ') in ' + dir.join(' ').cyan);
