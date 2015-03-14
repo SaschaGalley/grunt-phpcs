@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
 		phpcs: {
 			options: {
-				bin: '~/.composer/vendor/bin/phpcs',
+				bin: 'vendor/bin/phpcs',
 				standard: 'PSR2'
 			},
 			application: {
