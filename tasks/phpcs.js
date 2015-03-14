@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         
         exec(execute, {maxBuffer: options.maxBuffer}, function(error, stdout, stderr) {
             /* jshint -W030 */
-            typeof config.callback === 'function' && config.callback.call(this, err, stdout, stderr, done);
+            typeof options.callback === 'function' && options.callback.call(this, error, stdout, stderr, done);
             stdout && grunt.log.write(stdout);
             error && grunt.fail.warn(stderr ? stderr : 'Task phpcs:' + target + ' failed.');
             !error && grunt.log.ok(files.length + ' file' + (files.length === 1 ? '' : 's') + ' lint free.');
